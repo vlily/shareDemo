@@ -1,0 +1,92 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>利用jquery制作滚动到指定位置触发动画</title>  
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>  
+<style type="text/css">  
+*{ margin:0px; padding:0px;}  
+.gs{  
+position:relative;  
+top:100px;   
+background-color:#099;   
+left:150px; width:80px;   
+}  
+.xz{  
+animation:roate 2s;  
+animation-fill-mode:forwards;  
+animation-direction:alternate;  
+}  
+  
+@keyframes roate{  
+    from { 
+    transform:rotate(0deg);  
+    width:100px;  
+    height:100px; 
+}  
+    to{transform:rotate(360deg);  
+    width:200px;  
+  height:200px;  
+    }}  
+.xs{ width:50px; float: left; height:30px; background-color: #F90; position:fixed; left:700px; top:0px;}  
+</style>  
+</head>  
+  
+<body>  
+<script type="text/javascript">  
+/* 
+var elTop=$(element).offset().top;//元素相对于窗口的距离  
+var winTop=$(window).scrollTop(); //监控窗口已滚动的距离;  
+var winHeight=$(window).height();//浏览器窗口的高度  
+element  目标元素  
+cssname  动画class名  
+offset  相对于窗口的距离  
+*/  
+// 元素滚动到可视区函数
+function scrollnumber(element,cssname,offset){   
+    var elTop=$(element).offset().top;
+    var setElTop=eval(elTop + offset);
+    var winTop=$(window).scrollTop();  
+    var winHeight=$(window).height();  
+    // >=0限制元素不能处于可视区上面，后者限制元素不能处于可视区下边
+    if(setElTop-winTop>=0 && setElTop-winTop<winHeight){
+        $((element)).addClass((cssname));  
+    }else{
+        $((element)).removeClass((cssname));
+    }  
+}  
+  
+function scrollfun(){  
+    scrollnumber("#dh1",'xz',0);  
+    scrollnumber("#dh2",'xz',0);  
+    scrollnumber("#dh3",'xz',0);  
+    scrollnumber("#dh4",'xz',0);  
+}  
+// $(document).ready(function(e) {  
+//     scrollfun();  
+//     $(window).scroll(function(){  
+//         scrollfun();  
+         
+//     });  
+// });  
+</script>  
+  
+<div style="height:auto; background-color:#999; width:500px; margin: 0 auto;">  
+    <div class="com" style="height: 500px;background-color: darkgray;position: relative;">  
+        <div id="dh1" class="gs" >触发动画111</div>  
+    </div>  
+    <div style="height: 600px;background-color: cadetblue;" ></div>  
+    <div class="com" style="height: 500px;background-color: darkgray;position: relative;">  
+        <div id="dh2" class="gs" >触发动画222</div>  
+    </div>  
+    <div style="height: 600px;background-color: darkseagreen;" ></div>  
+    <div class="com" style="height: 500px;background-color: darkgray;position: relative;">  
+        <div id="dh3" class="gs" >触发动画333</div>  
+    </div>  
+    <div style="height: 600px;background-color: cadetblue;" ></div>  
+    <div class="com" style="height: 500px;background-color: darkgray;position: relative;">  
+        <div id="dh4" class="gs" >触发动画444</div>  
+    </div>  
+</div>  
+</body>  
+</html>  

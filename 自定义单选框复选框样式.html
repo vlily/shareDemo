@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>最简单的纯css制作单选或者复选框按钮</title>
+	<style>
+		/*公共部分——按钮样式*/
+		label::before {
+		    content: "";
+		    display: inline-block;
+		    width: 20px;
+		    height: 20px;
+		    background: #EEE;
+		    vertical-align: middle;
+		    -webkit-border-radius: 50%;
+		    margin-right: 10px;
+		    -webkit-box-sizing:border-box;
+		  -webkit-transition:background ease-in .5s
+		}
+		input[type="checkbox"]:checked+label::before{
+		  	background-color: #6399ae;
+			border: 2px #b3b3b3 solid;
+		}
+		/*自定义单选框radio样式*/
+		.login_agree {
+			position: relative;
+		}
+		.login_agree input[type="radio"]{
+			display: none;
+		}
+		.login_agree input[type="radio"]:checked+label::before{
+		  	background-color: #f4d345;
+			border: 4px #ccc solid;
+		}
+		/*自定义复选框checkbox*/
+		.sex_checkbox{
+			position: relative;
+		}
+		.sex_checkbox input[type="checkbox"]{
+			display: none;
+		}
+	</style>
+</head>  
+<body>
+	<fieldset>
+    <legend style="color: red;">自定义单选框radio</legend>
+    <div class="login_agree">
+    	<input type="radio" id="agree_btn">
+		<label for="agree_btn"  class="input_agree" style="width: 36%;">同意XXX协议</label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend style="color: red;">自定义复选框checkbox</legend>
+    <div class="sex_checkbox">
+    	<input type="checkbox" checked="" id="sex_male" value="1" name="sex"><label for="sex_male">男</label>
+		<input type="checkbox" id="sex_female" value="0" name="sex"><label for="sex_female">女</label>
+    </div>
+  </fieldset>
+  <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+  <script>
+  /*自定义复选框checkbox需要用js控制，二者只可选择其一*/
+	$('.sex_checkbox').find('input[type=checkbox]').bind('click', function(){
+		$('.sex_checkbox').find('input[type=checkbox]').not(this).attr("checked", false);
+	});
+  </script>
+</body>
+</html>
