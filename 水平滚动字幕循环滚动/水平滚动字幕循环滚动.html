@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>水平滚动字幕循环滚动一般配合后台数据</title>
+	<style>
+		.scroll-bar {
+		    height: 40px;
+		    line-height: 40px;
+		    overflow: hidden;
+		    font-size: 16px;
+		    background: #ccc;
+		}
+		#marquee{
+			margin: 0;
+			padding: 0;
+		}
+		#marquee li{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+<section class="scroll-bar" id="scrollText">
+    <ul id="marquee">
+        <li>13*****3632&nbsp抽取积分1000分</li>
+    </ul>
+</section>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script type="text/javascript" src="./jquery.marquee.min.js"></script> 
+<script>
+$(function(){
+	$("#marquee").marquee({
+		duration: 10000,//时间
+		gap: 100,//间距
+		delayBeforeStart: 0,//开始滚动延迟时间
+		direction: 'left',//滚动方向
+		duplicated: true,//是否循环播放
+	}); 
+})
+</script>
+</body>
+</html>
