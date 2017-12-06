@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>很多数据的表格-最简单易懂</title>
+    <meta charset="UTF-8">
+    <meta name="content-type" content="text/html; charset=GBK">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"> 
+	  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+  	<style type="text/css">
+   		.gridTable{table-layout:fixed;border-collapse: collapse;border: solid 1px #d0d0d0;cursor: pointer;}
+      .gridTable{table-layout:fixed;border-collapse: collapse;border: solid 1px #d0d0d0;box-sizing: border-box;}
+      .gridTable tbody tr:hover{background: #e4f5ff;}
+      .gridTable tbody tr:nth-child(2n){background-color: #F8F8F8;}
+      .gridTable .tfoot th{background-color: #dcdcdc;}
+      .gridTable th{height:25px;text-align:center;border-style: solid;border-width: 0 1px 1px 1px;border-left-color: #EEE !important;border-right-color: #d0d0d0 !important;border-color: #d0d0d0 !important;background: #f0eff0;box-sizing: border-box;min-width: 50px;padding: 0 3px;}
+      .gridTable th,.gridTable td{font-weight: normal;font-size: 12px;color: #676a6c;}
+      .gridTable th:nth-child(1){min-width: 80px;}
+      .gridTable td{height:23px;text-align:center;border-color: #ededed;font-weight: normal;border-right: solid 1px #ededed;border-bottom: solid 1px #ededed;vertical-align: middle;box-sizing: border-box;min-width: 55px;padding: 0 3px;}
+      .gridTable tfoot tr{background: #dcdcdc;}
+      .pageHeader{height: auto;}
+  	</style>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        tableplus($('.headerDiv_id'),$(".table_wapper"),200);
+      });
+      // 表格原理：整体分为head和body，复制table的thead放到head中（要复制高度和宽度），让head随table一起滚动，其实都是假象。
+      function tableplus(head,body,bodyH){
+        $(body).find(".gridTable tbody tr").click(function(){
+            $(this).css("background","#7cc5e5").siblings().css("background","");
+        })
+        var cloneTable = $(body).find(".gridTable").clone();//复制内容表格作为头部
+        var gridTable=$(body).find(".gridTableHead").height();
+        var headerDivWidth=$(body).width();//有时需去掉滚动条的宽度17就是固定头部div的宽度
+        $(head).append(cloneTable[0]);//放到头部div中
+        $(body).css("height",bodyH);
+        $(head).css({
+            "width":headerDivWidth,
+            "height":gridTable,
+            "margin-bottom":'-'+gridTable+"px",
+        });
+        $(body).scroll(function(){
+            $(head).scrollLeft($(this).scrollLeft());
+        })
+    }
+    </script>
+  </head>
+  <body> 
+    <div style="width: 60%;margin: 0 auto;text-align: center;">
+      <h2>当表格数据很多，左右上下都有滚动条时。左右滚动时，表头跟随移动，上下滚动时表头固定，只混动内容。原理看代码</h2>
+      <!-- head -->
+      <div id="headerDiv_id" class="headerDiv_id" style="position:relative;z-index: 0;overflow: hidden"></div>
+      <!-- body -->
+      <div id="bodyDiv_id" class="table_wapper" style="width:500px;overflow:scroll;" >
+          <table id="table_id" class="gridTable">
+            <thead class="gridTableHead">
+              <tr>
+                <th>姓名</th>
+                <th>小名</th>
+                <th>年龄</th>
+                <th>学历</th>
+                <th>毕业学校</th>
+                <th>学历</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+              </tr>
+              <tr class="tfoot">
+                <th>总计</th>
+                <th>10000</th>
+                <th>4pm</th>
+                <th>学历</th>
+                <th>毕业学校</th>
+                <th>学历</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+                <th>理想抱负与现实</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>lily</td>
+                <td>lily</td>
+                <td>lily</td>
+                <td>lily</td>
+                <td>神奇女侠</td>
+                <td>博士后</td>
+                <td>wander_yun</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+              </tr>
+              <tr>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+              </tr>
+              <tr>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+              </tr>
+              <tr>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+              </tr>
+              <tr>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+              </tr>
+              <tr>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+                <td>维护世界和平</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  	
+  </body>
+</html>
