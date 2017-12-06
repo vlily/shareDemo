@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>上拉发送ajax请求加载</title>
+	<style>
+		/*上拉加载样式*/
+		*{padding: 0;margin:0;font-size: 40px;}
+		li{
+			width: 100%;
+			display: inline-block;
+			border-bottom: 1px solid #ccc;
+		}
+		#scroller{
+			min-height: 101%;
+		}
+		.more{
+			height: 30px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.more span{
+			display: inline-block;
+			color: #b3b3b3;
+			height: 80px;
+			margin-top: 60px;
+		}
+	</style>
+</head>
+<body>
+<div id="wrapper" class="integration_detail">
+	<section class="scroller register_new" id="scroller">
+	        <div class="register_detail">
+	            <ul class="register_list">
+                   <li>签到赚积分<br><span class="register_time">2017.8.20</span>
+						<span class="register_right" >+10分</span>
+                   </li>
+	            </ul>
+	        </div>
+	   <div class="more"><i class="pull_icon"></i><span>上拉加载更多...</span></div>
+	   <br>
+	</section>
+    <input type='hidden' value="1" class='page'>
+</div>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="./iscroll.js"></script> 
+<script>
+$(function(){
+	// 注意：用iScroll在移动端会出现向上拉不动的情况，记得下面的vScroll和vScrollBar和checkDOMChanges都设置为true
+	// 插件中的默认配置项也要改为true，我这里的插件是已经完善好的，请下载。原理就是要出现滚动条
+	var myscroll = new iScroll("wrapper",{
+			vScroll : true,
+			vScrollBar : true,
+			checkDOMChanges:true,
+			onScrollMove:function(){
+				if (this.y<(this.maxScrollY)) {
+					$('.pull_icon').addClass('flip');
+					$('.pull_icon').removeClass('loading');
+					$('.more span').text('释放加载...');
+				}else{
+					$('.pull_icon').removeClass('flip loading');
+					$('.more span').text('上拉加载更多...')
+				}
+			},
+			onScrollEnd:function(){
+				if ($('.pull_icon').hasClass('flip')) {
+					$('.pull_icon').addClass('loading');
+					$('.more span').text('加载中...');
+					pullUpAction();
+				}
+				
+			},
+			onRefresh:function(){
+				$('.more').removeClass('flip');
+				$('.pull_icon').removeClass('loading');
+				$('.more span').text('上拉加载...');
+			}
+			
+		});
+		// 原理：拉动一次向后台请求,展示的数据条数由后台控制，类似于翻页，每一页的数据就是你拉动一次刷新出来的数据
+		function pullUpAction(){
+            var page    = $('.page').val();
+            page    = parseInt(page) + 1;
+            $('.page').val(page);
+			setTimeout(function(){
+				// $.ajax({
+				// 	url:'后台端口',
+				// 	type:'post',
+				// 	data:{page:page},
+				// 	dataType:'json',
+				// 	success:function(data){
+				// 		console.log(data)
+    //                     for(i in data)
+    //                     {
+    //                         var tname           = data[i].typeName;
+    //                         var create_time     = data[i].create_time.substring(0,10);
+    //                         var credit          = data[i].credit;
+    //                         var html = '<li>'+tname+'<br><span class="register_time">'+create_time+'</span>';
+    //                         if(credit > 0)//正数：得到积分和负数失去积分的字体颜色不同
+    //                         {
+    //                             html += '<span class="register_right" >+'+credit+'</span>';
+    //                         }else{
+    //                             html += '<span class="register_right" style="color: #b3b3b3">'+credit+'</span>';
+    //                         }
+    //                         html += '</li>';
+    //                         $('.scroller ul').append(html);
+    //                     }
+				// 		myscroll.refresh();
+				// 	},
+				// 	error:function(){
+				// 		console.log('error');
+				// 	},
+				// })
+				// 模拟数据
+				for (var i = 0; i < 5; i++) {
+					$('.scroller ul').append("<li>签到赚积分<br><span>2017.8.20</span><span>+10分</span></li>");
+				}
+				myscroll.refresh();
+			}, 1000)
+		}
+		if ($('.scroller').height()<$('#wrapper').height()) {
+			$('.more').hide();
+			myscroll.destroy();
+		}
+})
+</script>
+</body>
+</html>
