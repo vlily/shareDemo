@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动端自动打开微信接口</title>
+</head>
+<body>
+	<p style="font-size: 40px;">给颗小心心吧，复制我，然后自动跳转微信，记得是移动端哦</p>
+	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+	<script>
+		document.body.oncopy =function(){//当页面产生复制行为时，跳转页面到微信,兼容安卓和ios
+	    	window.location.href='weixin://';		
+		 }
+	</script>
+</body>
+</html>
