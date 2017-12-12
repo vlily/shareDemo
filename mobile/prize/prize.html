@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大转盘抽奖</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/prize.css">
+</head>
+<body>
+    <div class="content">
+        <section class="logo">
+            <img src="img/title-prize.png" alt="">
+        </section>
+        <section class="scroll-bar" id="scrollText">
+            <ul id="marquee">
+                <li>13*****3632&nbsp抽取积分1000分</li>
+            </ul>
+        </section>
+        <section class="turntable-prize">
+            <p>我的积分：
+                <span>100</span>
+            </p>
+            <p>今日剩余次数：
+                <span>9</span>
+            </p>
+            <div class="rotate-prize">
+                <div class="pointer"><img src="img/pointer.png" alt="pointer"/></div>
+                <div class="rotate" ><img id="rotate" src="img/rotate.png" alt="turntable"/></div>
+            </div>
+            <div class="click-prize">
+                <a href="#" class="submit"><img src="img/submit.png" alt=""></a>
+            </div>
+            <div id="mark">
+                <img src="img/prize1000.png" class="red-img">
+            </div>
+        </section>
+        <section class="rule-prize">
+            <ul>
+                <li>1. 本次抽奖活动日期为7月18~20日</li>
+                <li>2. 每日抽奖次数为10次，每次抽奖花费10积分</li>
+                <li>3. 积分可在会员日兑换礼品或现金抵扣，详询护肤顾问</li>
+            </ul>
+            <p>本活动最终解释权由XXX所有</p>
+        </section>
+    </div>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/awardRotate.js"></script>  
+    <script type="text/javascript" src="js/jquery.marquee.min.js"></script>    
+    <script type="text/javascript" src="js/prize.js"></script>  
+</body>
+</html>
