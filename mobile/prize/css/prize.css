@@ -1,0 +1,401 @@
+@media screen and (min-width:320px) {
+    html {
+        font-size:42.67px
+    }
+}
+@media screen and (min-width:360px) {
+    html {
+        font-size:48px
+    }
+}
+@media screen and (min-width:375px) {
+    html {
+        font-size:50px
+    }
+}
+@media screen and (min-width:414px) {
+    html {
+        font-size:55.2px
+    }
+}
+@media screen and (min-width:480px) {
+    html {
+        font-size:64px
+    }
+}
+@media screen and (min-width:640px) {
+    html {
+        font-size:85.33px
+    }
+}
+@media screen and (min-width:750px) {
+    html {
+        font-size:100px
+    }
+}
+html,body{height: 100%; background: #86c1d4;}
+body{
+    /*max-width: 640px;*/
+    margin: 0 auto;
+}
+.content{
+    width: 100%;
+    height: 100%; 
+    background: #86c1d4;
+    box-sizing: border-box;
+}
+/*prize begin*/
+.logo{
+    height: 2.64493rem;
+    text-align: center;
+    background: url(/Application/Public/img/zhuanpan/logo2.png) no-repeat 0.25362rem 0.18116rem; 
+    background-size: 1.19565rem 0.43478rem;
+}
+.logo img{
+    /*display: inline-block;*/
+    width: 4.27536rem;
+    height: 2.21014rem;
+    margin: 0.21739rem auto;
+}
+.scroll-bar{
+    height: 0.57971rem;
+    line-height: 0.57971rem;
+    overflow: hidden;
+    font-size: 0.21739rem;
+    background: rgba(255, 255, 255, 0.65);
+}
+.scroll-bar li{
+    color: #262623;
+    display: inline-block;
+    float: left;
+    padding-left: 0.8855rem;  
+}
+.turntable-prize{
+    height: 7.24638rem;
+    margin: 0 auto;
+    padding: 0.32609rem 0.18116rem;  
+    position: relative;
+    box-sizing: border-box;
+}
+.turntable-prize p{
+    color: #262623;
+    font-size: 0.25362rem;
+    display: inline-block;
+}
+.turntable-prize p:nth-child(1){
+    float: left;
+}
+.turntable-prize p:nth-child(2){
+    float: right;
+}
+.turntable-prize p span{
+    color: #ffc412;
+}
+.turntable-prize .rotate-prize{
+    height: 5.14493rem; 
+    width: 5.14493rem;
+    margin: 0 auto;
+    position: relative;
+    background: url(/Application/Public/img/zhuanpan/bg-prize.png) center 0 no-repeat;
+    background-size: 5.14493rem 5.14493rem;
+}
+.turntable-prize .pointer{
+    width: 1.81159rem;
+    height: 1.23188rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -1.20580rem;
+    margin-top:-0.59594rem;
+    z-index: 1;
+}
+.turntable-prize .pointer img{
+    width: 1.81159rem;
+    height: 1.23188rem;
+}
+.turntable-prize .rotate{
+    width: 4.67391rem;
+    height: 4.67391rem;
+    position: absolute;
+    left: 0.25rem;
+    top: 0.25rem;
+}
+.turntable-prize .rotate img{
+    width: 4.67391rem;
+    /*height: 4.67391rem;*/
+}
+.turntable-prize .click-prize{
+    width: 2.82609rem;
+    height: 0.86957rem;
+    /*display: inline-block;*/
+    text-align: center;
+    margin: 0.47101rem auto;
+}
+.turntable-prize .submit img{
+    width: 2.82609rem;
+    height: 0.86957rem;
+}
+#mark{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.red-img{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 70%;
+    transform: translateX(-50%) translateY(-50%);
+
+}
+.rule-prize ul{
+    height: 0.97826rem;
+    overflow: hidden;
+    padding-left: 1.08696rem;
+    background: url(/Application/Public/img/zhuanpan/ruler-prize.png) no-repeat;
+    background-size: 0.97826rem;
+    /*display: inline-block;*/
+}
+.rule-prize li{
+    height: 0.25362rem;
+    color: #262623;
+    font-size: 0.25362rem;
+    /*display: inline-block;*/
+}
+.rule-prize li:nth-child(2){
+    margin: 0.05435rem 0;
+}
+.rule-prize p{
+    color: #fff;
+    text-align: center;
+    font-size: 0.21739rem;
+    margin-top: 0.18116rem;
+}
+/*prize over*/
+/*login begin*/
+.logo-login{
+    width: 100%;
+    /*height:6.08696rem;*/
+    margin: 0 auto;
+    text-align: center;
+}
+.logo-login .logo1{
+    width: 1.77536rem;
+    height: 0.65217rem;
+    margin: 0.25362rem auto;
+}
+.logo-login .tittle-login{
+    width: 5.36232rem;
+    height: 2.97101rem;
+    margin: 0.97826rem auto;
+    display: block;
+}
+#form{width: 100%;}
+.form-login,form{
+    /*width: 6.81159rem;*/
+    width: 92%;
+    /*height: 3.56884rem;*/
+    margin: 0.10870rem auto; 
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0;
+}
+.form-login input{
+    width: 100%;
+    height: 0.90580rem;
+    color: #333;
+    height: 0.77899rem;
+    font-size: 0.32609rem;
+    display: block;
+    border:none;
+    outline: none;
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    /*border-radius: 0.09058rem;*/
+}
+::-webkit-input-placeholder{color:#e9e9e9;}
+::-moz-placeholder{color:#e9e9e9;}
+:-moz-placeholder{color:#e9e9e9;}
+.form-login .user{
+    height: 0.90580rem;
+    color: #333;
+    padding-left: 0.83333rem;
+    margin-bottom: 0.36232rem;
+    -webkit-appearance:none;
+    background: #fff url(/Application/Public/img/zhuanpan/login-icon.png) no-repeat 0.18116rem 0.20916rem;
+    background-size: 0.33174rem;
+}
+.form-login .img-code{
+    width: 100%;
+    height: 0.90580rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 0.36232rem;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    background: #fff url(/Application/Public/img/zhuanpan/login-icon.png) no-repeat 0.18116rem -0.71284rem;
+    background-size: 0.33174rem;
+    padding-left: 0.83333rem;
+}
+.img-letter{width: 70% !important; display: block; float: left;margin-top: 0.18116rem; position: absolute;top: 0.09058rem;}
+.picCodeImg{width: 30% !important; display: block; float: left;}
+/*.form-login .img-code>input{
+    width: 3.85870rem;
+}*/
+.identify-code{position: absolute;top: 0.09058rem;}
+.form-login .img-code img{
+    width: 2.81957rem;
+    height: 0.90580rem;
+    line-height: 0.89980rem; 
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 6;
+}
+#VerifyImage{
+    width: 2.81957rem;
+    height: 0.90580rem;
+    line-height: 0.89980rem; 
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 6;
+}
+.form-login .identify{
+    height: 0.90580rem;
+    position: relative;
+    background: #fff url(/Application/Public/img/zhuanpan/login-icon.png) no-repeat 0.18116rem -0.71284rem;
+    background-size: 0.33174rem;
+    padding-left: 0.83333rem;
+}
+.form-login .identify>input{
+    width: 3.85870rem;
+}
+.form-login .identify .send-btn{
+    color: #87c0d5;
+    font-size: 0.46609rem;
+    outline:none;
+    border: 0;
+    width: 2.81957rem;
+    height: 0.90580rem;
+    padding: 0 0.07246rem;
+    display: inline-block;
+    position: absolute;
+    background: rgb(226,226,226);
+    top: 0;
+    right: 0; 
+    z-index: 6;
+    box-sizing: border-box;
+}
+.form-login .btn{
+    height: 0.90580rem;
+    line-height: 0.90580rem;
+    padding-top: 0;
+    font-size: 0.38043rem;
+    font-weight: bold;
+    color: #fff;
+    margin-top: 0.47101rem;
+    background: rgb(254,197,17);
+    box-sizing: border-box;
+}
+.footer{
+    margin-top: 1.19275rem;
+    height: 0.90580rem;
+    line-height: 0.90580rem;
+    text-align: center;
+}
+.footer p{
+    height: 0.90580rem;
+    line-height: 0.90580rem;
+    color: #fff;
+    text-align: center;
+    font-size: 0.21739rem;
+    margin-top: 0.18116rem;
+}
+/*login over*/
+/*personal begin*/
+header{
+    height: 1.19565rem;
+    line-height: 1.19565rem;
+    color: #fff;
+    font-size: 0.39855rem;
+    background: #000;
+    text-align: center;
+}
+.content-personal{
+    width: 100%;
+    height: 100%;
+    background: #e4eff4;
+    text-align: center;
+    box-sizing: border-box;
+}
+.logo-personal img{
+    width: 1.77536rem;
+    height: 0.65217rem;
+    margin: 0.21739rem auto;
+}
+.infor-personal{
+    width: 6.77536rem;
+    height: 1.88406rem;
+    margin: 0.25362rem auto;
+    position: relative;
+}
+.infor-personal .avater{
+    width: 1.88406rem;
+    height: 1.88406rem;
+    background: #fec511;
+}
+.infor-personal .avater img{
+    width: 1.88406rem;
+    height: 1.88406rem;
+}
+.infor-personal .points{
+    width: 4.78261rem;
+    height: 1.88406rem;
+    position: absolute;
+    top: 0;
+    left: 2.04710rem;
+    overflow: hidden;
+}
+.infor-personal .points p{
+    width: 4.78261rem;
+    height: 0.57971rem;
+    line-height: 0.57971rem;
+    background: #fff;
+    margin-bottom: 0.10870rem;
+}
+.infor-personal .points p span{
+    font-size: 0.25362rem;
+}
+.infor-personal .points p span:first-child{
+    color: #538fa4;
+    float: left;
+    margin-left: 0.25362rem;
+}
+.infor-personal .points p span:last-child{
+    float: right; 
+    margin-right: 0.25362rem;
+}
+.infor-personal .points p:last-child{
+    margin-bottom: 0;
+}
+.rules-personal{
+    height: auto;
+    margin: 0.32609rem 0;
+    background: #fff;
+}
+.rules-personal p{
+    font-size: 0.28986rem;
+    padding: 0.65217rem 0.43478rem;
+    text-align: left;
+
+}
+/*personal over*/
