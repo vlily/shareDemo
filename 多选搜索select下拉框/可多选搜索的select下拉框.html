@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>可多选搜索的select下拉框</title>
+	<link type="text/css" href="./select2.min.css" rel="stylesheet"/>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	<script charset="utf-8" src="./select2.min.js"></script>
+	<style>
+		#select1{width: 400px;}
+	</style>
+</head>
+<body>
+	<select id="select1" multiple="multiple" >
+        <option value="1">网址wanderyun.com</option>
+        <option value="2">公众号wander_yun</option>
+        <option value="3">插件官网http://select2.github.io/select2/</option>
+    </select>
+    <script>
+    	// 介绍：普通的下拉框没有多选，搜索等功能，自己写非常费时间，而vue，layui等大型框架中虽有，但是不够轻便，有点大材小用，所以就推荐了一款很轻便，但是代码很清晰，很实用的小插件，记得小心心哦
+    	$(document).ready(function() { 
+    		$("#select1").select2({
+    			placeholder: "请选择（可多选）",
+    			allowClear: true
+    		}); 
+    	});
+    </script>
+</body>
+</html>
