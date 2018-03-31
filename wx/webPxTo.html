@@ -1,0 +1,150 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>px转化为moblie的rem和小程序的rpx</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link href="http://www.wanderyun.com/css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="http://www.wanderyun.com/layui/css/layui.css" rel="stylesheet">
+    <!-- <link href="../layui/css/layui.mobile.css" rel="stylesheet"> -->
+    <link href="http://www.wanderyun.com/css/article.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://www.wanderyun.com/css/nativeShare.css"/>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8e8e23264f3d4cdffe058bfc71bc88e3";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <nav class="nav_article clear">
+            <a class="return_page" href="javascript:;"><i class="layui-icon">&#xe65c;</i></a>
+            <a class="share_button" style="float: right;" href="javascript:;"><i class="layui-icon">&#xe641;</i></a>
+        </nav>
+        <article class="article">
+            <div class="px-to-rpx">
+                <div class="layui-form-item">
+                    <p class="articleLabel">px转化为rpx <span class="rpxInfor">(注：本转化率只针对类iphone7等宽度为375的屏幕)</span></p>
+                    <input class="layui-input px-input" type="number" name="title" placeholder="请输入px" autocomplete="off">
+                    <input class="layui-input red rpx-input" type="text" name="title" placeholder="转化为rpx" autocomplete="off">
+                </div>
+                <div class="layui-form-item">
+                    <p class="articleLabel">px转化为rem<span class="rpxInfor">(注：本转化率只针对类iphone7等宽度为375的屏幕)</span></p>
+                    <input class="layui-input px-input-rem" type="number" name="title" placeholder="请输入px" autocomplete="off">
+                    <input class="layui-input red rem-input" type="text" name="title" placeholder="转化为rem" autocomplete="off">
+                </div>
+                <div class="layui-form-item">
+                    <p class="articleLabel">rem转化为rpx <span class="rpxInfor">(注：本转化率只针对类iphone7等宽度为375的屏幕)</span></p>
+                    <input class="layui-input rem-input-rpx" type="number" name="title" placeholder="请输入rem" autocomplete="off">
+                    <input class="layui-input red torpx-input" type="text" name="title" placeholder="转化为rpx" autocomplete="off">
+                </div>
+                <p class="article-infor">
+                <span class="articleLabel">工具使用温馨提示：</span>
+                <br>
+                0. 各种pc端兼容使用单位：px+百分比（针对宽度）。各种移动端兼容使用：rem。pc+mobile使用：px+100%+media（或者框架）。小程序就单独的使用rpx。完美。
+                <br>
+                1. rpx单位是微信小程序专有。特点是自适应。因为rpx规定的是750个物理像素。所以设计图测量尺寸时先转化为iphone7的尺寸（宽375px也就是700物理像素）然后量出10px，就是20rpx。注意调试也要在iphone7下哦。
+                <br>
+                2. rem是根据根元素html的font-size的大小变化而变化，比如根元素为16px，那么转化为rem就是1/16rem。所以只要搭配media的使用就可控制rem为移动界的杠把子：自适应。这里我已经设置好了如下
+                </p>
+            </div>
+            <section class="react_show">
+                <p>demo链接下载(喜欢就送颗真心撒)：</p>
+                <a class="link_style" target="_blank" href="https://github.com/vlily/shareDemo/blob/master/mobile/prize/css/reset.css">rem自适应移动端通用样式</a>
+            </section>
+            <!-- 代码编辑器 -->
+            <pre class="layui-code layui-code layui-box layui-code-view" lay-title="想要自适应moblie请复制" lay-encode="false">
+/*移动px换算rem*/
+@media screen and (min-width:320px) {
+    html {
+        font-size:42.67px
+    }
+}
+@media screen and (min-width:360px) {
+    html {
+        font-size:48px
+    }
+}
+@media screen and (min-width:375px) {
+    html {
+        font-size:50px
+    }
+}
+@media screen and (min-width:414px) {
+    html {
+        font-size:55.2px
+    }
+}
+@media screen and (min-width:480px) {
+    html {
+        font-size:64px
+    }
+}
+@media screen and (min-width:640px) {
+    html {
+        font-size:85.33px
+    }
+}
+@media screen and (min-width:750px) {
+    html {
+        font-size:100px
+    }
+}
+            </pre>   
+        </article>
+        <!-- 分享 -->
+        <div id="nativeShare"></div>
+    </div>
+</body>
+<!-- 全局js -->
+    <script src="../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../layui/layui.all.js"></script>
+    <script src="../js/nativeShare.js"></script>
+    <script src="../js/public.js"></script>
+    <!-- 自定义js -->
+<script>
+    /**
+     * 2018.3.7
+     * by lily
+     * 公众号：wander_yun
+     * 个人网站：wanderyun.com
+     * 应号友2018.3.31开源
+     **/
+    $(function(){
+        $(".px-input").on("input propertychange",function(){
+            var num=parseInt($(this).val()*2)+"rpx";
+            $(".rpx-input").val(num);
+        })
+        $(".px-input-rem").on("input propertychange",function(){
+            var num=Math.round($(this).val()/50*100)/100+"rem";
+            $(".rem-input").val(num);
+        })
+        $(".rem-input-rpx").on("input propertychange",function(){
+            var num=parseInt($(this).val()*100)+"rpx";
+            $(".torpx-input").val(num);
+        })
+        $(".return_page").click(function(){
+            history.go(-1);
+        })
+        changeKey();
+        function changeKey(){
+            $('meta[name="keywords"]').attr("content",$("title").html());
+            $('meta[name="description"]').attr("content",$("title").html());
+        }
+    })
+</script>
+</html>
