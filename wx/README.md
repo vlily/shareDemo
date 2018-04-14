@@ -8,6 +8,7 @@
  * 2018.3.7
  * by lily
  * 公众号：wander_yun
- * 个人网站：wanderyun.com
+ * 个人网站：http://www.wanderyun.com/
+ * 在线使用工具：http://www.wanderyun.com/originality/wxmlto.html
  * 应号友2018.3.31开源
  **/
