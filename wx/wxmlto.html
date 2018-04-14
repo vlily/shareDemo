@@ -1,0 +1,197 @@
+ <!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>小程序代码wxml和html的转化</title>
+    <meta name="keywords" content="小程序代码wxml和html的转化,wxss和css转化,rem和rpx转化,px和rpx转化,在线工具,小程序">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link href="http://www.wanderyun.com/layui/css/layui.css" rel="stylesheet">
+    <link href="http://www.wanderyun.com/layui/css/layui.mobile.css" rel="stylesheet">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "https://hm.baidu.com/hm.js?8e8e23264f3d4cdffe058bfc71bc88e3";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <style>
+   		.topBtn{text-align: left;}
+   		.active{background: rgb(139,174,125);}
+    	.article{overflow:hidden;width: 96%;margin-left: 30px;}
+    	.change-infor,.user-infor{font-size: 14px;color: #999;margin: 10px 0;}
+    	.change-infor{color: red;}
+    	.layui-textarea{display: inline-block;width: 100%;min-height: 700px;min-width: 500px;border-radius: 0;resize: none;overflow-y: auto;outline: none;position: relative;font-size: 12px;padding-top: 20px;}
+    	.change-result{border:1px solid #ccc;}
+    	.article-left,.article-right{display: inline-block;float: left;margin-right: 10px;}
+    	.layui-input-block {margin-left: 0px; min-height: 36px;}
+    </style>
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <!-- <nav class="nav_article clear">
+            <a class="return_page" href="javascript:;"><i class="layui-icon">&#xe65c;</i></a>
+            <a class="share_button" style="float: right;" href="javascript:;"><i class="layui-icon">&#xe641;</i></a>
+        </nav> -->
+        <article class="article">
+            <p class="user-infor">使用规则：若是html直接复制body下的所有标签就好（不包括body），若是小程序直接复制WXML内所有标签</p>
+        	<div class="topBtn">
+        		<button class="layui-btn layui-btn-primary toBtn active" id="htmlToWxml">html转化为WXML</button>
+        		<button class="layui-btn layui-btn-primary toBtn" id="wxmlToHtml">WXML转化为html</button>
+                <button class="layui-btn layui-btn-primary toBtn" id="wxssToCss">wxss转化为css</button>
+                <button class="layui-btn layui-btn-primary toBtn" id="cssToWxss">css转化为Wxss</button>
+                <button class="layui-btn layui-btn-primary toBtn" id="pxToRem">px批量替换成rem</button>
+        		<!-- <button type="reset" class="layui-btn layui-btn-primary">重置</button> -->
+        	</div>
+            <p class="change-infor"></p>
+        	<div class="article-left layui-col-xs12 layui-col-sm5 layui-col-md5">
+        		<form class="layui-form" action="">
+	    			<div class="layui-form-item layui-form-text">
+					    <div class="layui-input-block ">
+					      <textarea name="desc" class="layui-textarea inputText"></textarea>
+					    </div>
+				  	</div>
+	    		</form>
+        	</div>
+        	<div class="article-right layui-col-xs12 layui-col-sm5 layui-col-md5">
+        		<textarea name="desc" class="layui-textarea change-result" ></textarea>
+        	</div>
+        </article>
+        <!-- 分享 -->
+        <!-- <div id="nativeShare"></div> -->
+    </div>
+</body>
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script> -->
+    <script src="http://www.wanderyun.com/js/jquery.min.js?v=2.1.4"></script>
+   	<script src="http://www.wanderyun.com/layui/layui.all.js"></script>
+<script>
+    /**
+     * 2018.3.7
+     * by lily
+     * 公众号：wander_yun
+     * 个人网站：wanderyun.com
+     * 应号友2018.3.31开源
+     */
+    $(function(){
+        $(".topBtn button").on("click",function(){
+            $(this).addClass("active").siblings().removeClass("active")
+            $(".change-result").html("");
+            $(".change-infor").html("");
+        })
+        $(".inputText").on("input propertychange focus",function(e){
+            var inputValue=$(this).val(); 
+            
+            if($(".active").attr("id")=="htmlToWxml"){
+                console.log("把html转化成WXML")
+                inputValue = inputValue.replace(/<div |<p |<table |<tr |<ul |<dl |<h1 |<h2 |<h3 |<h4 |<h5 |<h6 |<nav |<head |<header |<footer |<article |<aside /ig, '<view ')
+                inputValue = inputValue.replace(/<div>|<p>|<table>|<tr>|<ul>|<dl>|<h1>|<h2>|<h3>|<h4>|<h5>|<h6>|<nav>|<head>|<header>|<footer>|<article>|<aside>/ig, '<view>')
+                inputValue = inputValue.replace(/<\/div>|<\/p>|<\/table>|<\/tr>|<\/ul>|<\/dl>|<\/h1>|<\/h2>|<\/h3>|<\/h4>|<\/h6>|<\/h6>|<\/nav>|<\/head>|<\/header>|<\/footer>|<\/article>|<\/aside>/ig, '</view>')
+
+                inputValue = inputValue.replace(/textarea/ig, 'rich-text')
+
+                inputValue = inputValue.replace(/<span |<th |<td |<li |<dt /ig, '<text ')
+                inputValue = inputValue.replace(/<span>|<\/span>|<th>|<td>|<li>|<dt>/ig, '<text>')
+                inputValue = inputValue.replace(/<\/span>|<\/th>|<\/td>|<\/li>|<\/dt>/ig, '</text>')
+
+                inputValue = inputValue.replace(/<img /ig, '<image ')
+                inputValue = inputValue.replace(/<img>/ig, '<image>')
+                inputValue = inputValue.replace(/<\/img>/ig, '</image>')
+
+                inputValue = inputValue.replace(/onclick/ig, 'bindsubmit')
+                // 标签里面含有样式rpx
+                var reg1=/-?\d+(\.\d+)?px/ig;
+                var reg2=/-?\d+px/ig;
+                var reg3=/-?\d+(\.\d+)?rem/ig;
+                var reg4=/-?\d+rem/ig;
+                inputValue=replaceAll(reg1,inputValue,2,"rpx")
+                inputValue=replaceAll(reg2,inputValue,2,"rpx")
+                inputValue=replaceAll(reg3,inputValue,100,"rpx")
+                inputValue=replaceAll(reg4,inputValue,100,"rpx")
+                
+                $(".change-infor").html("html转化为WXML时，页面中可能含有超链接和swiper轮播图等标签，请手动修改")
+            }
+            if($(".active").attr("id")=="wxmlToHtml"){
+                console.log("把WXML转化成html")
+                inputValue = inputValue.replace(/<view |<scroll-view |<cover-view |<swiper |<swiper-item |<checkbox-group |<radio-group /ig, '<div ')
+                inputValue = inputValue.replace(/<view>|<scroll-view>|<cover-view>|<swiper>|<swiper-item>|<checkbox-group>|<radio-group>/ig, '<div>')
+                inputValue = inputValue.replace(/<\/view>|<\/scroll-view>|<\/cover-view>|<\/swiper>|<\/swiper-item>|<\/checkbox-group>|<\/radio-group>/ig, '</div>')
+
+                inputValue = inputValue.replace(/<text /ig, '<span ')
+                inputValue = inputValue.replace(/<text>/ig, '<span>')
+                inputValue = inputValue.replace(/<\/text>/ig, '</span>')
+
+                inputValue = inputValue.replace(/<checkbox /ig, '<input type="checkbox" ')
+                inputValue = inputValue.replace(/<checkbox>/ig, '<input type="checkbox"> ')
+                inputValue = inputValue.replace(/<\/checkbox>/ig, '')
+                inputValue = inputValue.replace(/<radio /ig, '<input type="radio" ')
+                inputValue = inputValue.replace(/<radio>/ig, '<input type="radio"> ')
+                inputValue = inputValue.replace(/<\/radio>/ig, '')
+
+                inputValue = inputValue.replace(/<image |<cover-image /ig, '<img ')
+                inputValue = inputValue.replace(/<image>|<cover-image>/ig, '<img>')
+                inputValue = inputValue.replace(/<\/image>|<\/cover-image>/ig, '')
+
+                inputValue = inputValue.replace(/bindsubmit/ig, 'onclick')
+
+                inputValue = inputValue.replace(/rich-text/ig, 'textarea')
+
+                // 标签里面含有样式px
+                var reg1=/-?\d+(\.\d+)?rpx/ig;
+                var reg2=/-?\d+rpx/ig;
+                inputValue=replaceAll(reg1,inputValue,0.5,"px")
+                inputValue=replaceAll(reg2,inputValue,0.5,"px")
+                $(".change-infor").html("WXML转化为html时，页面中可能含有wx-for等类似小程序语法和数据类（{{}}）还有一些无法替换的标签（如icon），请手动修改")
+            }
+            if($(".active").attr("id")=="wxssToCss"){
+                $(".change-infor").html("Wxss转化为css规则是rpx->px")
+                var reg1=/-?\d+(\.\d+)?rpx/ig;
+                var reg2=/-?\d+rpx/ig;
+                inputValue=replaceAll(reg1,inputValue,0.5,"px")
+                inputValue=replaceAll(reg2,inputValue,0.5,"px")
+            }
+            if($(".active").attr("id")=="cssToWxss"){
+                $(".change-infor").html("css转化为Wxss规则是px->rpx；rem->rpx")
+                var reg1=/-?\d+(\.\d+)?px/ig;
+                var reg2=/-?\d+px/ig;
+                var reg3=/-?\d+(\.\d+)?rem/ig;
+                var reg4=/-?\d+rem/ig;
+                inputValue=replaceAll(reg1,inputValue,2,"rpx")
+                inputValue=replaceAll(reg2,inputValue,2,"rpx")
+                inputValue=replaceAll(reg3,inputValue,100,"rpx")
+                inputValue=replaceAll(reg4,inputValue,100,"rpx")
+            }
+            if($(".active").attr("id")=="pxToRem"){
+                $(".change-infor").html("")
+                var reg1=/-?\d+(\.\d+)?px/ig;
+                var reg2=/-?\d+px/ig;
+                inputValue=replaceAll(reg1,inputValue,0.02,"rem")
+                inputValue=replaceAll(reg2,inputValue,0.02,"rem")
+            }
+            $(".change-result").html(inputValue);  
+        })
+        $(".return_page").click(function(){
+            history.go(-1);
+        })
+        // 按照正则reg把target找出并用replace按照scale（和unit单位）批量替换掉
+        function replaceAll(reg,target,scale,unit){
+            var result = target.match(reg);
+            for(var i in result){
+                target = target.replace(result[i],parseFloat(result[i])*scale+unit)
+                console.log(result[i],parseFloat(result[i])*scale+unit)
+                console.log(target)
+            }
+            return target; 
+        }
+    })
+</script>
+</html>
